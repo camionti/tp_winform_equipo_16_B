@@ -32,6 +32,7 @@ namespace Actividad2
         private void InitializeComponent()
         {
             this.DGVArticulos = new System.Windows.Forms.DataGridView();
+            this.btnAgregarArticulo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVArticulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,11 +47,22 @@ namespace Actividad2
             this.DGVArticulos.TabIndex = 0;
             this.DGVArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVArticulos_CellContentClick);
             // 
+            // btnAgregarArticulo
+            // 
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(1123, 635);
+            this.btnAgregarArticulo.Name = "btnAgregarArticulo";
+            this.btnAgregarArticulo.Size = new System.Drawing.Size(158, 35);
+            this.btnAgregarArticulo.TabIndex = 1;
+            this.btnAgregarArticulo.Text = "Agregar Articulo ";
+            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
+            this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1317, 681);
+            this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.DGVArticulos);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -68,6 +80,7 @@ namespace Actividad2
         #endregion
 
         private System.Windows.Forms.DataGridView DGVArticulos;
+        private Button btnAgregarArticulo;
     }
 }
 

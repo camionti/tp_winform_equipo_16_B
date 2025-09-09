@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using Conexion2;
+using Conexion2;
+
 
 namespace Actividad2
 {
@@ -22,9 +24,15 @@ namespace Actividad2
 
         public void Form1_Load(object sender, EventArgs e)
         {
-            Conexion conexio = new Conexion();
+            Conexion.ConexionArticulo conexio = new Conexion.ConexionArticulo();
             listaArticulo = conexio.Listar();
             DGVArticulos.DataSource = listaArticulo;
+        }
+
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            FormAltaArticulo alta = new FormAltaArticulo();
+            alta.ShowDialog();
         }
     }
 

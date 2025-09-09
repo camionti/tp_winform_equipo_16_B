@@ -42,8 +42,8 @@ namespace Conexion2
                     aux.Codigo = lector["Codigo"].ToString();
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
-                   // aux.IdMarca = (int)lector["IdMarca"];
-                   // aux.IdCategoria = (int)lector["IdCategoria"];
+                    aux.Idmarca = (int)lector["IdMarca"];
+                    aux.Idcategoria = (int)lector["IdCategoria"];
                     aux.Precio = (decimal)lector["Precio"];
                     aux.TipoMarca = new Marca();
                     aux.TipoMarca.Descripcion = (string)lector["TipoMarca"];
