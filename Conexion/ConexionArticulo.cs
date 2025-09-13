@@ -177,5 +177,22 @@ namespace Conexion
                 datos.cerrarConexion();
             }
         }
+
+        public void eliminar (int id)
+        {
+            try
+            {
+                AccesoDatos datos= new AccesoDatos();
+                datos.setarConsulta("delete from ARTICULOS where id = @id");
+                datos.setearParametro ("@id", id);
+                datos.ejecutarAccion ();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex ;
+            }
+        }
     }
 }

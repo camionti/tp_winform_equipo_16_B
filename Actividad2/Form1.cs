@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using dominio;
 using Conexion2;
 using Conexion2;
+using Conexion;
 
 
 namespace Actividad2
@@ -51,6 +52,33 @@ namespace Actividad2
             FormAltaArticulo modificar = new FormAltaArticulo(seleccionado);
             modificar.ShowDialog();
             cargar();
+        }
+
+        private void btnEliminarArticulos_Click(object sender, EventArgs e)
+        {
+            ConexionArticulo conexion = new ConexionArticulo();
+            Articulo seleccionado;
+
+            try
+            {
+                seleccionado = (Articulo)DGVArticulos.CurrentRow.DataBoundItem;
+                DialogResult respuesta = MessageBox.Show("¿Seguro que querés eliminar este artículo?",
+                                                 "Eliminar artículo",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    conexion.eliminar(seleccionado.Id);
+                    MessageBox.Show("Artículo eliminado correctamente.");
+                    cargar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 
