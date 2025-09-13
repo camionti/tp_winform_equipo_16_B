@@ -27,6 +27,10 @@ namespace Conexion
         comando.CommandType = System.Data.CommandType.Text;
         comando.CommandText = consulta;
         }
+        public void setearParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor ?? DBNull.Value);
+        }
 
         public void ejecutarLectura()
         {

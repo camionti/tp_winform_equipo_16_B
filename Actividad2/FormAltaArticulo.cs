@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +17,16 @@ namespace Actividad2
 {
     public partial class FormAltaArticulo : Form
     {
+        private Articulo articulo = null;
         public FormAltaArticulo()
         {
             InitializeComponent();
+        }
+        public FormAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Articulo";
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -33,24 +41,45 @@ namespace Actividad2
 
         private void buttonConfrim_Click(object sender, EventArgs e)
         {
-            Articulo ArtNuevo = new Articulo();
+            
             ConexionArticulo conexionArticulo = new ConexionArticulo();
             try
             {
-                ArtNuevo.Codigo = textBoxCodigo.Text;
-                ArtNuevo.Nombre = textBoxNombre.Text;
-                ArtNuevo.Descripcion = textBoxDescrip.Text;
-                ArtNuevo.Idmarca = (int)comboBoxMarca.SelectedValue;
-                ArtNuevo.Idcategoria = (int)comboBoxCategoria.SelectedValue;
-                ArtNuevo.Precio = int.Parse(textBoxPrecio.Text);
-                ArtNuevo.TipoMarca = new Marca();
-                ArtNuevo.TipoMarca.IDMarca = (int)comboBoxMarca.SelectedValue;
+                if(articulo==null)
+                articulo=new Articulo();
 
-                ArtNuevo.TipoCategoria = new Categoria();
-                ArtNuevo.TipoCategoria.IdCategoria = (int)comboBoxCategoria.SelectedValue;
+                articulo.Codigo = textBoxCodigo.Text;
+                articulo.Nombre = textBoxNombre.Text;
+                articulo.Descripcion = textBoxDescrip.Text;
+                articulo.Idmarca = (int)comboBoxMarca.SelectedValue;
+                articulo.Idcategoria = (int)comboBoxCategoria.SelectedValue;
+                decimal precio;
+                if (decimal.TryParse(textBoxPrecio.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out precio))
+                {
+                    articulo.Precio = precio;
+                }
+                else
+                {
+                    MessageBox.Show("El precio ingresado no es válido.");
+                    return;
+                }
+                articulo.TipoMarca = new Marca();
+                articulo.TipoMarca.IDMarca = (int)comboBoxMarca.SelectedValue;
 
-                conexionArticulo.agregar( ArtNuevo );
-                MessageBox.Show("agregado exitosamente");
+                articulo.TipoCategoria = new Categoria();
+                articulo.TipoCategoria.IdCategoria = (int)comboBoxCategoria.SelectedValue;
+
+               if(articulo.Id != 0)
+                {
+                    conexionArticulo.modificar(articulo);
+                    MessageBox.Show("modificado exitosamente");
+                }
+                else 
+                {
+                    conexionArticulo.agregar(articulo);
+                    MessageBox.Show("agregado exitosamente");
+                }
+                    
                 Close();
             }
             catch (Exception ex) 
@@ -75,7 +104,16 @@ namespace Actividad2
                 comboBoxCategoria.DisplayMember = "NombreCategoria";
                 comboBoxCategoria.ValueMember = "IdCategoria";
 
+                if (articulo != null) 
+                {
+                    textBoxCodigo.Text = articulo.Codigo;
+                    textBoxNombre.Text = articulo.Nombre;
+                    textBoxDescrip.Text = articulo.Descripcion;
+                    textBoxPrecio.Text = articulo.Precio.ToString();
 
+                    comboBoxMarca.SelectedValue = articulo.Idmarca;
+                    comboBoxCategoria.SelectedValue = articulo.Idcategoria;
+                }
             }
             catch (Exception ex) 
             {

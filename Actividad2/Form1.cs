@@ -24,15 +24,33 @@ namespace Actividad2
 
         public void Form1_Load(object sender, EventArgs e)
         {
+            cargar();
+        }
+        private void cargar()
+        {
             Conexion.ConexionArticulo conexio = new Conexion.ConexionArticulo();
             listaArticulo = conexio.Listar();
             DGVArticulos.DataSource = listaArticulo;
+            DGVArticulos.Columns["Id"].Visible = false;
+            DGVArticulos.Columns["IdCategoria"].Visible = false;
+            DGVArticulos.Columns["IdMarca"].Visible = false;
         }
 
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
             FormAltaArticulo alta = new FormAltaArticulo();
             alta.ShowDialog();
+            cargar();
+
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)DGVArticulos.CurrentRow.DataBoundItem;
+            FormAltaArticulo modificar = new FormAltaArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargar();
         }
     }
 

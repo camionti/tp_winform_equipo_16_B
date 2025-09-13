@@ -33,6 +33,7 @@ namespace Actividad2
         {
             this.DGVArticulos = new System.Windows.Forms.DataGridView();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVArticulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@ namespace Actividad2
             // 
             // btnAgregarArticulo
             // 
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(1123, 635);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(181, 634);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(158, 35);
             this.btnAgregarArticulo.TabIndex = 1;
@@ -57,11 +58,22 @@ namespace Actividad2
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(371, 634);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(158, 35);
+            this.btnModificar.TabIndex = 2;
+            this.btnModificar.Text = "Modificar Articulo ";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1317, 681);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.DGVArticulos);
             this.Name = "Form1";
@@ -81,6 +93,7 @@ namespace Actividad2
 
         private System.Windows.Forms.DataGridView DGVArticulos;
         private Button btnAgregarArticulo;
+        private Button btnModificar;
     }
 }
 

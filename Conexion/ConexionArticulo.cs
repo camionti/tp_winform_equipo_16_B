@@ -129,8 +129,14 @@ namespace Conexion
             try
             {
                 datos.setarConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) " +
-                    "VALUES ('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', '" + nuevo.Precio + "', '" + nuevo.Idmarca + "', '" + nuevo.Idcategoria + "')");
+                     "VALUES (@Codigo, @Nombre, @Descripcion, @Precio, @IdMarca, @IdCategoria)");
 
+                datos.setearParametro("@Codigo", nuevo.Codigo);
+                datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@Descripcion", nuevo.Descripcion);
+                datos.setearParametro("@Precio", nuevo.Precio);
+                datos.setearParametro("@IdMarca", nuevo.Idmarca);
+                datos.setearParametro("@IdCategoria", nuevo.Idcategoria);
 
                 datos.ejecutarAccion();
                 
@@ -141,6 +147,33 @@ namespace Conexion
             }
             finally
             { 
+                datos.cerrarConexion();
+            }
+        }
+        public void modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setarConsulta("UPDATE ARTICULOS SET Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio WHERE Id = @Id");
+                datos.setearParametro("@Codigo", articulo.Codigo);
+                datos.setearParametro("@Nombre", articulo.Nombre);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@Precio", articulo.Precio);
+                datos.setearParametro("@IdMarca", articulo.Idmarca);
+                datos.setearParametro("@IdCategoria", articulo.Idcategoria);
+                datos.setearParametro("@Id", articulo.Id);
+
+
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
                 datos.cerrarConexion();
             }
         }
