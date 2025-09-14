@@ -26,6 +26,12 @@ namespace Actividad2
         public void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Código");
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Categoría");
+            cboCampo.SelectedItem = "Nombre";
+            cboCriterio.SelectedItem = "Comienza con";
         }
         private void cargar()
         {
@@ -107,6 +113,173 @@ namespace Actividad2
             DGVArticulos.DataSource = null;
             DGVArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ConexionArticulo datosArticulos = new ConexionArticulo();
+
+            try
+            {
+                if (validarFiltro())
+                    return;
+
+                if (validarFiltroNumerico())
+                    return;
+
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+                int precioMinimo = validarPrecio(txtPrecioMinimo, 1000);
+                int precioMaximo = validarPrecio(txtPrecioMaximo, 99999999);
+
+
+
+                DGVArticulos.DataSource = datosArticulos.filtroAvanzado(campo, criterio, filtro, precioMinimo, precioMaximo);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private int validarPrecio(TextBox txtBox, int precioPorDefecto)
+        {
+            if (string.IsNullOrEmpty(txtBox.Text))
+            {
+                return precioPorDefecto;
+            }
+
+            return int.Parse(txtBox.Text);
+        }
+
+        private bool validarFiltro()
+        {
+            if (cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione un campo para filtrar");
+                return true;
+            }
+
+            if (cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione un criterio para filtrar");
+                return true;
+            }
+
+
+            return false;
+        }
+
+        private bool validarFiltroNumerico()
+        {
+            string precioMinimo = txtPrecioMinimo.Text;
+            string precioMaximo = txtPrecioMaximo.Text;
+
+            if (string.IsNullOrEmpty(precioMinimo))
+            {
+                precioMinimo = "1000";
+            }
+
+            if (string.IsNullOrEmpty(precioMaximo))
+            {
+                precioMaximo = "99999999";
+            }
+
+            if (int.Parse(precioMinimo) > int.Parse(precioMaximo))
+            {
+                MessageBox.Show("El precio mínimo no puede ser mayor al precio máximo");
+                txtPrecioMinimo.Text = "";
+                txtPrecioMaximo.Text = "";
+                txtPrecioMinimo.Focus();
+                return true;
+            }
+
+
+            if (int.Parse(precioMinimo) < 1000)
+            {
+                MessageBox.Show("El precio mínimo no puede ser menor a 1000");
+                txtPrecioMinimo.Text = "";
+                txtPrecioMinimo.Focus();
+                return true;
+            }
+
+            if (int.Parse(precioMaximo) < 1500)
+            {
+                MessageBox.Show("El precio máximo no puede ser menor a 1500");
+                txtPrecioMaximo.Text = "";
+                txtPrecioMaximo.Focus();
+                return true;
+            }
+
+
+            if (!(soloNumeros(precioMinimo)) && !(soloNumeros(precioMaximo)))
+            {
+                MessageBox.Show("Los campos numéricos deben contener solamente números");
+                txtPrecioMinimo.Text = "";
+                txtPrecioMaximo.Text = "";
+                txtPrecioMinimo.Focus();
+                return true;
+            }
+            else if (!(soloNumeros(precioMinimo)))
+            {
+                MessageBox.Show("Los campos numéricos deben contener solamente números");
+                txtPrecioMinimo.Text = "";
+                txtPrecioMinimo.Focus();
+                return true;
+            }
+            else if (!(soloNumeros(precioMaximo)))
+            {
+                MessageBox.Show("Los campos numéricos deben contener solamente números");
+                txtPrecioMaximo.Text = "";
+                txtPrecioMaximo.Focus();
+                return true;
+            }
+
+
+            return false;
+        }
+
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+
+            return true;
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+
+            if (opcion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void DGVArticulos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)DGVArticulos.CurrentRow.DataBoundItem;
+            FormAltaArticulo modificar = new FormAltaArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargar();
+
         }
     }
 

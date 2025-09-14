@@ -194,5 +194,123 @@ namespace Conexion
                 throw ex ;
             }
         }
+
+        public List<Articulo> filtroAvanzado(string campo, string criterio, string filtro, int precioMinimo, int precioMaximo)
+        {
+            List<Articulo> listaArticulos = new List<Articulo>();
+            AccesoDatos BaseDeDatos = new AccesoDatos();
+
+            try
+            {
+
+                string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, Precio, C.Descripcion TipoCategoria,C.Id IdCategoria , M.Descripcion TipoMarca, M.Id IdMarca from ARTICULOS A, CATEGORIAS C, MARCAS M where M.Id = A.IdMarca And A.IdCategoria = C.Id AND ";
+
+                switch (campo)
+                {
+                    case "Código":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "Codigo like '" + filtro + "%'";
+                                break;
+
+                            case "Termina con":
+                                consulta += "Codigo like '%" + filtro + "'";
+                                break;
+
+                            default:
+                                consulta += "Codigo like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Marca":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "M.Descripcion like '" + filtro + "%'";
+                                break;
+
+                            case "Termina con":
+                                consulta += "M.Descripcion like '%" + filtro + "'";
+                                break;
+
+                            default:
+                                consulta += "M.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Categoría":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "C.Descripcion like '" + filtro + "%'";
+                                break;
+
+                            case "Termina con":
+                                consulta += "C.Descripcion like '%" + filtro + "'";
+                                break;
+
+                            default:
+                                consulta += "C.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    default:
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "Nombre like '" + filtro + "%'";
+                                break;
+
+                            case "Termina con":
+                                consulta += "C.Descripcion like '%" + filtro + "'";
+                                break;
+
+                            default:
+                                consulta += "C.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                }
+
+                //Agrego los precios a la consulta
+                consulta += " AND Precio >= " + precioMinimo + " AND Precio <= " + precioMaximo;
+
+                BaseDeDatos.setarConsulta(consulta);
+                BaseDeDatos.ejecutarLectura();
+
+                 while (BaseDeDatos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                   
+
+                    aux.Id = (int)BaseDeDatos.Lector["Id"];
+                    aux.Codigo = BaseDeDatos.Lector["Codigo"].ToString();
+                    aux.Nombre = (string)BaseDeDatos.Lector["Nombre"];
+                    aux.Descripcion = (string)BaseDeDatos.Lector["Descripcion"];
+                    aux.Idmarca = (int)BaseDeDatos.Lector["IdMarca"];
+                    aux.Idcategoria = (int)BaseDeDatos.Lector["IdCategoria"];
+                    aux.Precio = (decimal)BaseDeDatos.Lector["Precio"];
+                    aux.TipoMarca = new Marca();
+                    aux.TipoMarca.Descripcion = (string)BaseDeDatos.Lector["TipoMarca"];
+                    aux.TipoCategoria = new Categoria();
+                    aux.TipoCategoria.NombreCategoria = (string)BaseDeDatos.Lector["TipoCategoria"];
+
+                    listaArticulos.Add(aux);
+                }
+
+                return listaArticulos;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
     }
 }
