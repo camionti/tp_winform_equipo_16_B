@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using Conexion2;
-using Conexion2;
 using Conexion;
+
 
 
 namespace Actividad2
@@ -32,11 +32,16 @@ namespace Actividad2
             Conexion.ConexionArticulo conexio = new Conexion.ConexionArticulo();
             listaArticulo = conexio.Listar();
             DGVArticulos.DataSource = listaArticulo;
+            ocultarColumnas();
+        }
+
+        private void ocultarColumnas()
+        {
+            //DGVArticulos.Columns["URLImagen"].Visible = false;
             DGVArticulos.Columns["Id"].Visible = false;
             DGVArticulos.Columns["IdCategoria"].Visible = false;
             DGVArticulos.Columns["IdMarca"].Visible = false;
         }
-
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
             FormAltaArticulo alta = new FormAltaArticulo();
@@ -79,6 +84,29 @@ namespace Actividad2
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro = txtFiltroRapido.Text;
+
+            if (filtro.Length >= 1)
+            {
+                listaFiltrada = listaArticulo.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper())
+                                                         || x.TipoMarca.ToString().ToUpper().Contains(filtro.ToUpper())
+                                                         || x.TipoCategoria.ToString().ToUpper().Contains(filtro.ToUpper())
+                                                         || x.Codigo.ToUpper().Contains(filtro.ToUpper()));
+
+            }
+            else
+            {
+                listaFiltrada = listaArticulo;
+            }
+
+            DGVArticulos.DataSource = null;
+            DGVArticulos.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 
