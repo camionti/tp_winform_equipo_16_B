@@ -227,7 +227,7 @@ namespace Conexion
             try
             {
 
-                string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, Precio, C.Descripcion TipoCategoria,C.Id IdCategoria , M.Descripcion TipoMarca, M.Id IdMarca from ARTICULOS A, CATEGORIAS C, MARCAS M where M.Id = A.IdMarca And A.IdCategoria = C.Id AND ";
+                string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, Precio, C.Descripcion TipoCategoria,C.Id IdCategoria , M.Descripcion TipoMarca, M.Id IdMarca, I.ImagenUrl UrlImagen from ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I where M.Id = A.IdMarca And A.IdCategoria = C.Id AND I.Id = (SELECT MIN(Id) FROM IMAGENES WHERE IdArticulo = A.Id) AND ";
 
                 switch (campo)
                 {
@@ -322,6 +322,8 @@ namespace Conexion
                     aux.TipoMarca.Descripcion = (string)BaseDeDatos.Lector["TipoMarca"];
                     aux.TipoCategoria = new Categoria();
                     aux.TipoCategoria.NombreCategoria = (string)BaseDeDatos.Lector["TipoCategoria"];
+                    aux.Imagen = new Imagen();
+                    aux.Imagen.UrlImagen = (string)BaseDeDatos.Lector["UrlImagen"];
 
                     listaArticulos.Add(aux);
                 }

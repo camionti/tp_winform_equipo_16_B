@@ -302,7 +302,7 @@ namespace Actividad2
             if (DGVArticulos.CurrentRow != null)
             {
                 Articulo aux = (Articulo)DGVArticulos.CurrentRow.DataBoundItem;
-                cargarImagen(aux.Imagen.UrlImagen);
+                cargarImagen(aux.Imagen?.UrlImagen);
             }
         }
     }
