@@ -18,7 +18,7 @@ namespace Conexion
         }
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=localhost,1433; database=CATALOGO_P3_DB; user id=sa; password=Suela1994a;");
+            conexion = new SqlConnection("server = .\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
             comando = new SqlCommand();
         }
 
