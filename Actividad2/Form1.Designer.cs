@@ -47,12 +47,15 @@ namespace Actividad2
             this.lblPrecioMaximo = new System.Windows.Forms.Label();
             this.txtPrecioMaximo = new System.Windows.Forms.TextBox();
             this.txtPrecioMinimo = new System.Windows.Forms.TextBox();
+            this.pbxArticulo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // DGVArticulos
             // 
             this.DGVArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.DGVArticulos.Location = new System.Drawing.Point(35, 56);
             this.DGVArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.DGVArticulos.Name = "DGVArticulos";
@@ -60,8 +63,9 @@ namespace Actividad2
             this.DGVArticulos.RowTemplate.Height = 24;
             this.DGVArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVArticulos.Size = new System.Drawing.Size(667, 295);
-            this.DGVArticulos.TabIndex = 0;
+            this.DGVArticulos.TabIndex = 1;
             this.DGVArticulos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVArticulos_CellContentDoubleClick);
+            this.DGVArticulos.SelectionChanged += new System.EventHandler(this.DGVArticulos_SelectionChanged);
             // 
             // btnAgregarArticulo
             // 
@@ -110,7 +114,7 @@ namespace Actividad2
             this.txtFiltroRapido.Location = new System.Drawing.Point(104, 25);
             this.txtFiltroRapido.Name = "txtFiltroRapido";
             this.txtFiltroRapido.Size = new System.Drawing.Size(205, 20);
-            this.txtFiltroRapido.TabIndex = 5;
+            this.txtFiltroRapido.TabIndex = 0;
             this.txtFiltroRapido.TextChanged += new System.EventHandler(this.txtFiltroRapido_TextChanged);
             // 
             // txtFiltroAvanzado
@@ -118,7 +122,7 @@ namespace Actividad2
             this.txtFiltroAvanzado.Location = new System.Drawing.Point(889, 371);
             this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(186, 20);
-            this.txtFiltroAvanzado.TabIndex = 27;
+            this.txtFiltroAvanzado.TabIndex = 8;
             // 
             // cboCriterio
             // 
@@ -127,7 +131,7 @@ namespace Actividad2
             this.cboCriterio.Location = new System.Drawing.Point(763, 370);
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(120, 21);
-            this.cboCriterio.TabIndex = 26;
+            this.cboCriterio.TabIndex = 5;
             // 
             // cboCampo
             // 
@@ -136,7 +140,7 @@ namespace Actividad2
             this.cboCampo.Location = new System.Drawing.Point(542, 369);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(117, 21);
-            this.cboCampo.TabIndex = 25;
+            this.cboCampo.TabIndex = 4;
             this.cboCampo.SelectedIndexChanged += new System.EventHandler(this.cboCampo_SelectedIndexChanged);
             // 
             // lblCriterio
@@ -162,7 +166,7 @@ namespace Actividad2
             this.btnBuscar.Location = new System.Drawing.Point(1090, 369);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 22;
+            this.btnBuscar.TabIndex = 9;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -190,20 +194,30 @@ namespace Actividad2
             this.txtPrecioMaximo.Location = new System.Drawing.Point(754, 407);
             this.txtPrecioMaximo.Name = "txtPrecioMaximo";
             this.txtPrecioMaximo.Size = new System.Drawing.Size(133, 20);
-            this.txtPrecioMaximo.TabIndex = 29;
+            this.txtPrecioMaximo.TabIndex = 7;
             // 
             // txtPrecioMinimo
             // 
             this.txtPrecioMinimo.Location = new System.Drawing.Point(542, 408);
             this.txtPrecioMinimo.Name = "txtPrecioMinimo";
             this.txtPrecioMinimo.Size = new System.Drawing.Size(121, 20);
-            this.txtPrecioMinimo.TabIndex = 28;
+            this.txtPrecioMinimo.TabIndex = 6;
+            // 
+            // pbxArticulo
+            // 
+            this.pbxArticulo.Location = new System.Drawing.Point(723, 56);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(290, 295);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulo.TabIndex = 32;
+            this.pbxArticulo.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1188, 465);
+            this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblPrecioMaximo);
             this.Controls.Add(this.txtPrecioMaximo);
@@ -225,6 +239,7 @@ namespace Actividad2
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,6 +265,7 @@ namespace Actividad2
         private Label lblPrecioMaximo;
         private TextBox txtPrecioMaximo;
         private TextBox txtPrecioMinimo;
+        private PictureBox pbxArticulo;
     }
 }
 

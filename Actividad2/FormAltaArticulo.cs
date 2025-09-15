@@ -4,9 +4,11 @@ using dominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +19,9 @@ namespace Actividad2
 {
     public partial class FormAltaArticulo : Form
     {
+
         private Articulo articulo = null;
+        private OpenFileDialog archivo = null;
         public FormAltaArticulo()
         {
             InitializeComponent();
@@ -45,8 +49,8 @@ namespace Actividad2
             ConexionArticulo conexionArticulo = new ConexionArticulo();
             try
             {
-                if(articulo==null)
-                articulo=new Articulo();
+                if(articulo == null)
+                    articulo = new Articulo();
 
                 articulo.Codigo = textBoxCodigo.Text;
                 articulo.Nombre = textBoxNombre.Text;
@@ -54,6 +58,7 @@ namespace Actividad2
                 articulo.Idmarca = (int)comboBoxMarca.SelectedValue;
                 articulo.Idcategoria = (int)comboBoxCategoria.SelectedValue;
                 decimal precio;
+
                 if (decimal.TryParse(textBoxPrecio.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out precio))
                 {
                     articulo.Precio = precio;
@@ -63,11 +68,15 @@ namespace Actividad2
                     MessageBox.Show("El precio ingresado no es válido.");
                     return;
                 }
+
                 articulo.TipoMarca = new Marca();
                 articulo.TipoMarca.IDMarca = (int)comboBoxMarca.SelectedValue;
 
                 articulo.TipoCategoria = new Categoria();
                 articulo.TipoCategoria.IdCategoria = (int)comboBoxCategoria.SelectedValue;
+
+                articulo.Imagen = new Imagen();
+                articulo.Imagen.UrlImagen = txtURLImagen.Text;
 
                if(articulo.Id != 0)
                 {
@@ -79,7 +88,13 @@ namespace Actividad2
                     conexionArticulo.agregar(articulo);
                     MessageBox.Show("agregado exitosamente");
                 }
-                    
+
+                //Guardo imagen local
+                if (archivo != null && !(txtURLImagen.Text.ToUpper().Contains("HTTP")))
+                {
+                    guardarImagenLocal(archivo);
+                }
+
                 Close();
             }
             catch (Exception ex) 
@@ -110,7 +125,7 @@ namespace Actividad2
                     textBoxNombre.Text = articulo.Nombre;
                     textBoxDescrip.Text = articulo.Descripcion;
                     textBoxPrecio.Text = articulo.Precio.ToString();
-
+                    txtURLImagen.Text = ((articulo.Imagen.UrlImagen != null) ? articulo.Imagen.UrlImagen : "");
                     comboBoxMarca.SelectedValue = articulo.Idmarca;
                     comboBoxCategoria.SelectedValue = articulo.Idcategoria;
                 }
@@ -119,6 +134,41 @@ namespace Actividad2
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnExaminar_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg;|png|*.png;|webp|*.webp;|jpeg|*.jpeg;|bmp|*.bmp";
+
+            if (archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtURLImagen.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
+            }
+        }
+
+        public void guardarImagenLocal(OpenFileDialog archivo)
+        {
+            Directory.CreateDirectory(ConfigurationManager.AppSettings["img-folder"]);
+            File.Copy(archivo.FileName, ConfigurationManager.AppSettings["img-folder"] + archivo.SafeFileName);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxArticulo.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pbxArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+            }
+        }
+
+        private void txtURLImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtURLImagen.Text);
         }
     }
 }

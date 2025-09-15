@@ -27,7 +27,7 @@ namespace Conexion2
 
                 conexion.ConnectionString = "server = .\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, Precio, C.Descripcion TipoCategoria, M.Descripcion TipoMarca from ARTICULOS A, CATEGORIAS C, MARCAS M where M.Id = A.IdMarca And A.IdCategoria = C.Id";
+                comando.CommandText = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, Precio, C.Descripcion TipoCategoria,C.Id IdCategoria , M.Descripcion TipoMarca, M.Id IdMarca, I.ImagenUrl URLImagen from ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I where M.Id = A.IdMarca And A.IdCategoria = C.Id And I.IdArticulo = A.Id And I.IdArticulo = A.Id";
                 comando.Connection = conexion;
 
                 conexion.Open();

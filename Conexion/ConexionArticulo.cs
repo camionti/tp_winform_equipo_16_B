@@ -19,7 +19,7 @@ namespace Conexion
 
             try
             {
-                datos.setarConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion,A.IdMarca AS IdMarca,A.IdCategoria AS IdCategoria,A.Precio, C.Descripcion AS TipoCategoria, M.Descripcion AS TipoMarca FROM ARTICULOS A INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id INNER JOIN MARCAS M ON A.IdMarca = M.Id;");
+                datos.setarConsulta("select A.Id, A.Codigo, A.Nombre, A.Descripcion, Precio, C.Descripcion TipoCategoria,C.Id IdCategoria , M.Descripcion TipoMarca, M.Id IdMarca, I.ImagenUrl UrlImagen from ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I where M.Id = A.IdMarca And A.IdCategoria = C.Id AND I.Id = (SELECT MIN(Id) FROM IMAGENES WHERE IdArticulo = A.Id);");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -36,6 +36,8 @@ namespace Conexion
                     aux.TipoMarca.Descripcion = (string)datos.Lector["TipoMarca"];
                     aux.TipoCategoria = new Categoria();
                     aux.TipoCategoria.NombreCategoria = (string)datos.Lector["TipoCategoria"];
+                    aux.Imagen = new Imagen();
+                    aux.Imagen.UrlImagen = (string)datos.Lector["UrlImagen"];
 
                     lista.Add(aux);
                 }
@@ -126,10 +128,12 @@ namespace Conexion
         public void agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
+            AccesoDatos datos2 = new AccesoDatos();
+
             try
             {
                 datos.setarConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) " +
-                     "VALUES (@Codigo, @Nombre, @Descripcion, @Precio, @IdMarca, @IdCategoria)");
+                     "VALUES (@Codigo, @Nombre, @Descripcion, @Precio, @IdMarca, @IdCategoria); SELECT CAST(SCOPE_IDENTITY() AS int);");
 
                 datos.setearParametro("@Codigo", nuevo.Codigo);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
@@ -137,9 +141,28 @@ namespace Conexion
                 datos.setearParametro("@Precio", nuevo.Precio);
                 datos.setearParametro("@IdMarca", nuevo.Idmarca);
                 datos.setearParametro("@IdCategoria", nuevo.Idcategoria);
-
-                datos.ejecutarAccion();
                 
+                string url = string.IsNullOrWhiteSpace(nuevo?.Imagen?.UrlImagen)
+                    ? "https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png"
+                    : nuevo.Imagen.UrlImagen.Trim();
+
+
+                datos.ejecutarLectura();
+
+                //LEO EL ID DEL NUEVO ARTICULO
+                int idArticulo = 0;
+                if (datos.Lector.Read())
+                    idArticulo = datos.Lector.GetInt32(0);
+                datos.cerrarConexion();
+
+                //Seteo la imagen en la tabla Imagenes
+                datos2.setarConsulta(
+                    "INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @ImagenUrl)"
+                );
+                datos2.setearParametro("@ImagenUrl", url);
+                datos2.setearParametro("@IdArticulo", idArticulo);
+                datos2.ejecutarAccion();
+
             }
             catch (Exception ex)
             {
@@ -148,6 +171,7 @@ namespace Conexion
             finally
             { 
                 datos.cerrarConexion();
+                datos2.cerrarConexion();
             }
         }
         public void modificar(Articulo articulo)

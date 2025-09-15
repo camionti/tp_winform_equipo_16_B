@@ -35,15 +35,17 @@ namespace Actividad2
         }
         private void cargar()
         {
-            Conexion.ConexionArticulo conexio = new Conexion.ConexionArticulo();
-            listaArticulo = conexio.Listar();
+            Conexion.ConexionArticulo conexion = new Conexion.ConexionArticulo();
+            listaArticulo = conexion.Listar();
             DGVArticulos.DataSource = listaArticulo;
             ocultarColumnas();
+            cargarImagen(listaArticulo[0].Imagen.UrlImagen);
+
         }
 
         private void ocultarColumnas()
         {
-            //DGVArticulos.Columns["URLImagen"].Visible = false;
+            DGVArticulos.Columns["Imagen"].Visible = false;
             DGVArticulos.Columns["Id"].Visible = false;
             DGVArticulos.Columns["IdCategoria"].Visible = false;
             DGVArticulos.Columns["IdMarca"].Visible = false;
@@ -270,6 +272,19 @@ namespace Actividad2
                 cboCriterio.Items.Add("Termina con");
                 cboCriterio.Items.Add("Contiene");
             }
+
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxArticulo.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pbxArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+            }
         }
 
         private void DGVArticulos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -280,6 +295,15 @@ namespace Actividad2
             modificar.ShowDialog();
             cargar();
 
+        }
+
+        private void DGVArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (DGVArticulos.CurrentRow != null)
+            {
+                Articulo aux = (Articulo)DGVArticulos.CurrentRow.DataBoundItem;
+                cargarImagen(aux.Imagen.UrlImagen);
+            }
         }
     }
 

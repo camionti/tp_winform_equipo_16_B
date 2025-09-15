@@ -42,14 +42,20 @@
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.labelCodigo = new System.Windows.Forms.Label();
             this.textBoxCodigo = new System.Windows.Forms.TextBox();
+            this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            this.btnExaminar = new System.Windows.Forms.Button();
+            this.txtURLImagen = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // LabelNombre
             // 
             this.LabelNombre.AutoSize = true;
-            this.LabelNombre.Location = new System.Drawing.Point(53, 109);
+            this.LabelNombre.Location = new System.Drawing.Point(40, 89);
+            this.LabelNombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelNombre.Name = "LabelNombre";
-            this.LabelNombre.Size = new System.Drawing.Size(56, 16);
+            this.LabelNombre.Size = new System.Drawing.Size(44, 13);
             this.LabelNombre.TabIndex = 0;
             this.LabelNombre.Text = "Nombre";
             this.LabelNombre.Click += new System.EventHandler(this.label1_Click);
@@ -57,65 +63,73 @@
             // Descripcion
             // 
             this.Descripcion.AutoSize = true;
-            this.Descripcion.Location = new System.Drawing.Point(53, 167);
+            this.Descripcion.Location = new System.Drawing.Point(40, 136);
+            this.Descripcion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Size = new System.Drawing.Size(79, 16);
+            this.Descripcion.Size = new System.Drawing.Size(63, 13);
             this.Descripcion.TabIndex = 1;
             this.Descripcion.Text = "Descripcion";
             // 
             // LabelPrecio
             // 
             this.LabelPrecio.AutoSize = true;
-            this.LabelPrecio.Location = new System.Drawing.Point(53, 225);
+            this.LabelPrecio.Location = new System.Drawing.Point(40, 183);
+            this.LabelPrecio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelPrecio.Name = "LabelPrecio";
-            this.LabelPrecio.Size = new System.Drawing.Size(46, 16);
+            this.LabelPrecio.Size = new System.Drawing.Size(37, 13);
             this.LabelPrecio.TabIndex = 2;
             this.LabelPrecio.Text = "Precio";
             // 
             // labelMarca
             // 
             this.labelMarca.AutoSize = true;
-            this.labelMarca.Location = new System.Drawing.Point(53, 283);
+            this.labelMarca.Location = new System.Drawing.Point(40, 222);
+            this.labelMarca.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMarca.Name = "labelMarca";
-            this.labelMarca.Size = new System.Drawing.Size(45, 16);
+            this.labelMarca.Size = new System.Drawing.Size(37, 13);
             this.labelMarca.TabIndex = 3;
             this.labelMarca.Text = "Marca";
             // 
             // labelCategoria
             // 
             this.labelCategoria.AutoSize = true;
-            this.labelCategoria.Location = new System.Drawing.Point(53, 341);
+            this.labelCategoria.Location = new System.Drawing.Point(40, 264);
+            this.labelCategoria.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCategoria.Name = "labelCategoria";
-            this.labelCategoria.Size = new System.Drawing.Size(66, 16);
+            this.labelCategoria.Size = new System.Drawing.Size(52, 13);
             this.labelCategoria.TabIndex = 4;
             this.labelCategoria.Text = "Categoria";
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(217, 106);
+            this.textBoxNombre.Location = new System.Drawing.Point(163, 86);
+            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(185, 22);
+            this.textBoxNombre.Size = new System.Drawing.Size(140, 20);
             this.textBoxNombre.TabIndex = 5;
             // 
             // textBoxDescrip
             // 
-            this.textBoxDescrip.Location = new System.Drawing.Point(217, 161);
+            this.textBoxDescrip.Location = new System.Drawing.Point(163, 131);
+            this.textBoxDescrip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxDescrip.Name = "textBoxDescrip";
-            this.textBoxDescrip.Size = new System.Drawing.Size(315, 22);
+            this.textBoxDescrip.Size = new System.Drawing.Size(140, 20);
             this.textBoxDescrip.TabIndex = 6;
             // 
             // textBoxPrecio
             // 
-            this.textBoxPrecio.Location = new System.Drawing.Point(217, 219);
+            this.textBoxPrecio.Location = new System.Drawing.Point(163, 178);
+            this.textBoxPrecio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxPrecio.Name = "textBoxPrecio";
-            this.textBoxPrecio.Size = new System.Drawing.Size(185, 22);
+            this.textBoxPrecio.Size = new System.Drawing.Size(140, 20);
             this.textBoxPrecio.TabIndex = 7;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(522, 379);
+            this.buttonCancel.Location = new System.Drawing.Point(464, 329);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(90, 36);
+            this.buttonCancel.Size = new System.Drawing.Size(68, 29);
             this.buttonCancel.TabIndex = 10;
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -123,9 +137,10 @@
             // 
             // buttonConfrim
             // 
-            this.buttonConfrim.Location = new System.Drawing.Point(635, 379);
+            this.buttonConfrim.Location = new System.Drawing.Point(345, 329);
+            this.buttonConfrim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonConfrim.Name = "buttonConfrim";
-            this.buttonConfrim.Size = new System.Drawing.Size(90, 36);
+            this.buttonConfrim.Size = new System.Drawing.Size(68, 29);
             this.buttonConfrim.TabIndex = 11;
             this.buttonConfrim.Text = "Confirmar";
             this.buttonConfrim.UseVisualStyleBackColor = true;
@@ -135,41 +150,87 @@
             // 
             this.comboBoxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMarca.FormattingEnabled = true;
-            this.comboBoxMarca.Location = new System.Drawing.Point(217, 283);
+            this.comboBoxMarca.Location = new System.Drawing.Point(163, 222);
+            this.comboBoxMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxMarca.Name = "comboBoxMarca";
-            this.comboBoxMarca.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxMarca.Size = new System.Drawing.Size(140, 21);
             this.comboBoxMarca.TabIndex = 12;
             // 
             // comboBoxCategoria
             // 
             this.comboBoxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategoria.FormattingEnabled = true;
-            this.comboBoxCategoria.Location = new System.Drawing.Point(217, 341);
+            this.comboBoxCategoria.Location = new System.Drawing.Point(163, 264);
+            this.comboBoxCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxCategoria.Name = "comboBoxCategoria";
-            this.comboBoxCategoria.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxCategoria.Size = new System.Drawing.Size(140, 21);
             this.comboBoxCategoria.TabIndex = 13;
             // 
             // labelCodigo
             // 
             this.labelCodigo.AutoSize = true;
-            this.labelCodigo.Location = new System.Drawing.Point(53, 63);
+            this.labelCodigo.Location = new System.Drawing.Point(40, 51);
+            this.labelCodigo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCodigo.Name = "labelCodigo";
-            this.labelCodigo.Size = new System.Drawing.Size(51, 16);
+            this.labelCodigo.Size = new System.Drawing.Size(40, 13);
             this.labelCodigo.TabIndex = 14;
             this.labelCodigo.Text = "Codigo";
             // 
             // textBoxCodigo
             // 
-            this.textBoxCodigo.Location = new System.Drawing.Point(217, 57);
+            this.textBoxCodigo.Location = new System.Drawing.Point(163, 46);
+            this.textBoxCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxCodigo.Name = "textBoxCodigo";
-            this.textBoxCodigo.Size = new System.Drawing.Size(185, 22);
+            this.textBoxCodigo.Size = new System.Drawing.Size(140, 20);
             this.textBoxCodigo.TabIndex = 15;
+            // 
+            // pbxArticulo
+            // 
+            this.pbxArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxArticulo.Location = new System.Drawing.Point(317, 45);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(255, 281);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulo.TabIndex = 18;
+            this.pbxArticulo.TabStop = false;
+            // 
+            // btnExaminar
+            // 
+            this.btnExaminar.Location = new System.Drawing.Point(228, 332);
+            this.btnExaminar.Name = "btnExaminar";
+            this.btnExaminar.Size = new System.Drawing.Size(75, 23);
+            this.btnExaminar.TabIndex = 22;
+            this.btnExaminar.Text = "Examinar";
+            this.btnExaminar.UseVisualStyleBackColor = true;
+            this.btnExaminar.Click += new System.EventHandler(this.btnExaminar_Click);
+            // 
+            // txtURLImagen
+            // 
+            this.txtURLImagen.Location = new System.Drawing.Point(163, 306);
+            this.txtURLImagen.Name = "txtURLImagen";
+            this.txtURLImagen.Size = new System.Drawing.Size(140, 20);
+            this.txtURLImagen.TabIndex = 20;
+            this.txtURLImagen.Leave += new System.EventHandler(this.txtURLImagen_Leave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(40, 309);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "URLImagen";
             // 
             // FormAltaArticulo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.btnExaminar);
+            this.Controls.Add(this.txtURLImagen);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.textBoxCodigo);
             this.Controls.Add(this.labelCodigo);
             this.Controls.Add(this.comboBoxCategoria);
@@ -184,9 +245,11 @@
             this.Controls.Add(this.LabelPrecio);
             this.Controls.Add(this.Descripcion);
             this.Controls.Add(this.LabelNombre);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormAltaArticulo";
             this.Text = "FormAltaArticulo";
             this.Load += new System.EventHandler(this.FormAltaArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,5 +271,9 @@
         private System.Windows.Forms.ComboBox comboBoxCategoria;
         private System.Windows.Forms.Label labelCodigo;
         private System.Windows.Forms.TextBox textBoxCodigo;
+        private System.Windows.Forms.PictureBox pbxArticulo;
+        private System.Windows.Forms.Button btnExaminar;
+        private System.Windows.Forms.TextBox txtURLImagen;
+        private System.Windows.Forms.Label label7;
     }
 }
