@@ -1,5 +1,4 @@
 ﻿using Conexion;
-using Conexion2;
 using dominio;
 using System;
 using System.Collections.Generic;
@@ -50,43 +49,64 @@ namespace Actividad2
             try
             {
                 if(articulo == null)
-                    articulo = new Articulo();
+                articulo = new Articulo();
+
+                if (string.IsNullOrWhiteSpace(textBoxCodigo.Text))
+                {
+                    MessageBox.Show("Debe ingresar un código para el artículo.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
+                {
+                    MessageBox.Show("Debe ingresar un nombre para el artículo.");
+                    return;
+                }
+
+                if (comboBoxMarca.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Debe seleccionar una marca.");
+                    return;
+                }
+
+                if (comboBoxCategoria.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Debe seleccionar una categoría.");
+                    return;
+                }
+
+                decimal precio;
+                if (!decimal.TryParse(textBoxPrecio.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out precio))
+                {
+                    MessageBox.Show("El precio ingresado no es válido.");
+                    return;
+                }
+
+                if (precio <= 0)
+                {
+                    MessageBox.Show("El precio debe ser mayor a cero.");
+                    return;
+                }
 
                 articulo.Codigo = textBoxCodigo.Text;
                 articulo.Nombre = textBoxNombre.Text;
                 articulo.Descripcion = textBoxDescrip.Text;
                 articulo.Idmarca = (int)comboBoxMarca.SelectedValue;
                 articulo.Idcategoria = (int)comboBoxCategoria.SelectedValue;
-                decimal precio;
+                articulo.Precio = precio;
 
-                if (decimal.TryParse(textBoxPrecio.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out precio))
-                {
-                    articulo.Precio = precio;
-                }
-                else
-                {
-                    MessageBox.Show("El precio ingresado no es válido.");
-                    return;
-                }
+                articulo.TipoMarca = new Marca { IDMarca = articulo.Idmarca };
+                articulo.TipoCategoria = new Categoria { IdCategoria = articulo.Idcategoria };
 
-                articulo.TipoMarca = new Marca();
-                articulo.TipoMarca.IDMarca = (int)comboBoxMarca.SelectedValue;
-
-                articulo.TipoCategoria = new Categoria();
-                articulo.TipoCategoria.IdCategoria = (int)comboBoxCategoria.SelectedValue;
-
-                articulo.Imagen = new Imagen();
-                articulo.Imagen.UrlImagen = txtURLImagen.Text;
-
-               if(articulo.Id != 0)
+                if (articulo.Id != 0)
                 {
                     conexionArticulo.modificar(articulo);
-                    MessageBox.Show("modificado exitosamente");
+                    MessageBox.Show("Articulo modificado exitosamente");
                 }
                 else 
                 {
                     conexionArticulo.agregar(articulo);
-                    MessageBox.Show("agregado exitosamente");
+                    MessageBox.Show("Articulo agregado exitosamente");
                 }
 
                 //Guardo imagen local
