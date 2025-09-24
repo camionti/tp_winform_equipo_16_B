@@ -304,6 +304,13 @@ namespace Actividad2
                 cargarImagen(aux.Imagen?.UrlImagen);
             }
         }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            FrmCategorias FromCategorias = new FrmCategorias();
+            FromCategorias.ShowDialog(); 
+            cargar(); 
+        }
     }
 
 

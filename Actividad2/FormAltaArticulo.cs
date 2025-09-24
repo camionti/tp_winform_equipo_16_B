@@ -96,7 +96,7 @@ namespace Actividad2
                 articulo.Precio = precio;
 
                 articulo.TipoMarca = new Marca { IDMarca = articulo.Idmarca };
-                articulo.TipoCategoria = new Categoria { IdCategoria = articulo.Idcategoria };
+                articulo.TipoCategoria = new Categoria { Id = articulo.Idcategoria };
 
                 if (articulo.Id != 0)
                 {

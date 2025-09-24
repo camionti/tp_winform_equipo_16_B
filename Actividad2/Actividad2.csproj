@@ -62,6 +62,18 @@
     <Compile Include="FormAltaArticulo.Designer.cs">
       <DependentUpon>FormAltaArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCategoriaAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategoriaAlta.Designer.cs">
+      <DependentUpon>FrmCategoriaAlta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategorias.Designer.cs">
+      <DependentUpon>FrmCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -69,6 +81,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAltaArticulo.resx">
       <DependentUpon>FormAltaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCategoriaAlta.resx">
+      <DependentUpon>FrmCategoriaAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCategorias.resx">
+      <DependentUpon>FrmCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,9 +112,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Conexion\Conexion2.csproj">
+    <ProjectReference Include="..\Conexion\Conexion.csproj">
       <Project>{12826228-985c-4d61-8299-759e8619529d}</Project>
-      <Name>Conexion2</Name>
+      <Name>Conexion</Name>
     </ProjectReference>
     <ProjectReference Include="..\dominio\dominio.csproj">
       <Project>{beb8cc7e-402b-4022-b458-20be39f38ff8}</Project>

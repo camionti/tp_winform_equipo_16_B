@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actividad2", "Actividad2\Ac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{BEB8CC7E-402B-4022-B458-20BE39F38FF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conexion2", "Conexion\Conexion2.csproj", "{12826228-985C-4D61-8299-759E8619529D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conexion", "Conexion\Conexion.csproj", "{12826228-985C-4D61-8299-759E8619529D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

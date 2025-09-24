@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 
 
+
 namespace Conexion
 {
     public class ConexionArticulo
@@ -35,7 +36,7 @@ namespace Conexion
                     aux.TipoMarca = new Marca();
                     aux.TipoMarca.Descripcion = (string)datos.Lector["TipoMarca"];
                     aux.TipoCategoria = new Categoria();
-                    aux.TipoCategoria.NombreCategoria = (string)datos.Lector["TipoCategoria"];
+                    aux.TipoCategoria.Descripcion = (string)datos.Lector["TipoCategoria"];
                     aux.Imagen = new Imagen();
                     aux.Imagen.UrlImagen = (string)datos.Lector["UrlImagen"];
 
@@ -105,8 +106,8 @@ namespace Conexion
                     while (datos.Lector.Read())
                     {
                         Categoria aux = new Categoria();
-                        aux.IdCategoria = (int)datos.Lector["Id"];
-                        aux.NombreCategoria = (string)datos.Lector["Descripcion"];
+                        aux.Id = (int)datos.Lector["Id"];
+                        aux.Descripcion = (string)datos.Lector["Descripcion"];
 
                         lista.Add(aux);
                     }
@@ -321,7 +322,7 @@ namespace Conexion
                     aux.TipoMarca = new Marca();
                     aux.TipoMarca.Descripcion = (string)BaseDeDatos.Lector["TipoMarca"];
                     aux.TipoCategoria = new Categoria();
-                    aux.TipoCategoria.NombreCategoria = (string)BaseDeDatos.Lector["TipoCategoria"];
+                    aux.TipoCategoria.Descripcion = (string)BaseDeDatos.Lector["TipoCategoria"];
                     aux.Imagen = new Imagen();
                     aux.Imagen.UrlImagen = (string)BaseDeDatos.Lector["UrlImagen"];
 

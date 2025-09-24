@@ -10,8 +10,8 @@ namespace dominio
     public class Categoria
     {
 
-        public int IdCategoria { get; set; }
-        public string NombreCategoria { get; set; }
-        public override string ToString() => NombreCategoria;
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
+        public override string ToString() => Descripcion;
     }
 }
