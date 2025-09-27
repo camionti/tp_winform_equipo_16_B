@@ -37,26 +37,27 @@
             // categoriaDescripcion
             // 
             this.categoriaDescripcion.AutoSize = true;
-            this.categoriaDescripcion.Location = new System.Drawing.Point(163, 67);
+            this.categoriaDescripcion.Location = new System.Drawing.Point(112, 59);
+            this.categoriaDescripcion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.categoriaDescripcion.Name = "categoriaDescripcion";
-            this.categoriaDescripcion.Size = new System.Drawing.Size(82, 16);
+            this.categoriaDescripcion.Size = new System.Drawing.Size(66, 13);
             this.categoriaDescripcion.TabIndex = 0;
             this.categoriaDescripcion.Text = "Descripcion:";
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(264, 64);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescripcion.Location = new System.Drawing.Point(188, 57);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(292, 22);
+            this.txtDescripcion.Size = new System.Drawing.Size(220, 20);
             this.txtDescripcion.TabIndex = 9;
             this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(264, 113);
+            this.btnGuardar.Location = new System.Drawing.Point(188, 97);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(143, 23);
+            this.btnGuardar.Size = new System.Drawing.Size(107, 19);
             this.btnGuardar.TabIndex = 10;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -64,9 +65,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(414, 113);
+            this.btnCancelar.Location = new System.Drawing.Point(300, 97);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(142, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(106, 19);
             this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -74,14 +76,16 @@
             // 
             // FrmCategoriaAlta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 214);
+            this.ClientSize = new System.Drawing.Size(534, 176);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.categoriaDescripcion);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmCategoriaAlta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCategoriaAlta";
             this.Load += new System.EventHandler(this.FrmCategoriaAlta_Load);
             this.ResumeLayout(false);

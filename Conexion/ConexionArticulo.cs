@@ -20,7 +20,7 @@ namespace Conexion
 
             try
             {
-                datos.setarConsulta("select A.Id, A.Codigo, A.Nombre, A.Descripcion, Precio, C.Descripcion TipoCategoria,C.Id IdCategoria , M.Descripcion TipoMarca, M.Id IdMarca, I.ImagenUrl UrlImagen from ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I where M.Id = A.IdMarca And A.IdCategoria = C.Id AND I.Id = (SELECT MIN(Id) FROM IMAGENES WHERE IdArticulo = A.Id);");
+                datos.setarConsulta("select A.Id, A.Codigo, A.Nombre, A.Descripcion, Precio, C.Descripcion Categoria,C.Id IdCategoria , M.Descripcion Marca, M.Id IdMarca, I.ImagenUrl UrlImagen from ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I where M.Id = A.IdMarca And A.IdCategoria = C.Id AND I.Id = (SELECT MIN(Id) FROM IMAGENES WHERE IdArticulo = A.Id);");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -34,9 +34,9 @@ namespace Conexion
                     aux.Idcategoria = (int)datos.Lector["IdCategoria"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
                     aux.TipoMarca = new Marca();
-                    aux.TipoMarca.Descripcion = (string)datos.Lector["TipoMarca"];
+                    aux.TipoMarca.Descripcion = (string)datos.Lector["Marca"];
                     aux.TipoCategoria = new Categoria();
-                    aux.TipoCategoria.Descripcion = (string)datos.Lector["TipoCategoria"];
+                    aux.TipoCategoria.Descripcion = (string)datos.Lector["Categoria"];
                     aux.Imagen = new Imagen();
                     aux.Imagen.UrlImagen = (string)datos.Lector["UrlImagen"];
 
@@ -57,7 +57,7 @@ namespace Conexion
             }
         }
 
-        public class ConexionMarca
+        public class ConexionMarcaArticulo
         {
             public List<Marca> ListarMarcas()
             {

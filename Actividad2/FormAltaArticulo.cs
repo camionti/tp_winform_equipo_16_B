@@ -129,15 +129,15 @@ namespace Actividad2
             try
             {
                 ConexionMarca conexionMarca = new ConexionMarca();
-                ConexionCategoria conexionCategoria = new ConexionCategoria();
+                ConexionCategorias conexionCategoria = new ConexionCategorias();
 
                 //para que el id no quede como null en la base de datos
-                comboBoxMarca.DataSource = conexionMarca.ListarMarcas();
+                comboBoxMarca.DataSource = conexionMarca.Listar();
                 comboBoxMarca.DisplayMember = "Descripcion"; 
                 comboBoxMarca.ValueMember = "IDMarca";
-                comboBoxCategoria.DataSource = conexionCategoria.ListarCategorias();
-                comboBoxCategoria.DisplayMember = "NombreCategoria";
-                comboBoxCategoria.ValueMember = "IdCategoria";
+                comboBoxCategoria.DataSource = conexionCategoria.Listar();
+                comboBoxCategoria.DisplayMember = "Descripcion";
+                comboBoxCategoria.ValueMember = "Id";
 
                 if (articulo != null) 
                 {

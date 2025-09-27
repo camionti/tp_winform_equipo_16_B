@@ -103,34 +103,34 @@
             // textBoxNombre
             // 
             this.textBoxNombre.Location = new System.Drawing.Point(163, 86);
-            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(140, 20);
-            this.textBoxNombre.TabIndex = 5;
+            this.textBoxNombre.TabIndex = 1;
             // 
             // textBoxDescrip
             // 
             this.textBoxDescrip.Location = new System.Drawing.Point(163, 131);
-            this.textBoxDescrip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDescrip.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDescrip.Name = "textBoxDescrip";
             this.textBoxDescrip.Size = new System.Drawing.Size(140, 20);
-            this.textBoxDescrip.TabIndex = 6;
+            this.textBoxDescrip.TabIndex = 2;
             // 
             // textBoxPrecio
             // 
             this.textBoxPrecio.Location = new System.Drawing.Point(163, 178);
-            this.textBoxPrecio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPrecio.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPrecio.Name = "textBoxPrecio";
             this.textBoxPrecio.Size = new System.Drawing.Size(140, 20);
-            this.textBoxPrecio.TabIndex = 7;
+            this.textBoxPrecio.TabIndex = 3;
             // 
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(464, 329);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(68, 29);
-            this.buttonCancel.TabIndex = 10;
+            this.buttonCancel.TabIndex = 9;
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -138,10 +138,10 @@
             // buttonConfrim
             // 
             this.buttonConfrim.Location = new System.Drawing.Point(345, 329);
-            this.buttonConfrim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonConfrim.Margin = new System.Windows.Forms.Padding(2);
             this.buttonConfrim.Name = "buttonConfrim";
             this.buttonConfrim.Size = new System.Drawing.Size(68, 29);
-            this.buttonConfrim.TabIndex = 11;
+            this.buttonConfrim.TabIndex = 8;
             this.buttonConfrim.Text = "Confirmar";
             this.buttonConfrim.UseVisualStyleBackColor = true;
             this.buttonConfrim.Click += new System.EventHandler(this.buttonConfrim_Click);
@@ -151,20 +151,20 @@
             this.comboBoxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMarca.FormattingEnabled = true;
             this.comboBoxMarca.Location = new System.Drawing.Point(163, 222);
-            this.comboBoxMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxMarca.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxMarca.Name = "comboBoxMarca";
             this.comboBoxMarca.Size = new System.Drawing.Size(140, 21);
-            this.comboBoxMarca.TabIndex = 12;
+            this.comboBoxMarca.TabIndex = 4;
             // 
             // comboBoxCategoria
             // 
             this.comboBoxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategoria.FormattingEnabled = true;
             this.comboBoxCategoria.Location = new System.Drawing.Point(163, 264);
-            this.comboBoxCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxCategoria.Name = "comboBoxCategoria";
             this.comboBoxCategoria.Size = new System.Drawing.Size(140, 21);
-            this.comboBoxCategoria.TabIndex = 13;
+            this.comboBoxCategoria.TabIndex = 5;
             // 
             // labelCodigo
             // 
@@ -179,10 +179,10 @@
             // textBoxCodigo
             // 
             this.textBoxCodigo.Location = new System.Drawing.Point(163, 46);
-            this.textBoxCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCodigo.Name = "textBoxCodigo";
             this.textBoxCodigo.Size = new System.Drawing.Size(140, 20);
-            this.textBoxCodigo.TabIndex = 15;
+            this.textBoxCodigo.TabIndex = 0;
             // 
             // pbxArticulo
             // 
@@ -200,7 +200,7 @@
             this.btnExaminar.Location = new System.Drawing.Point(228, 332);
             this.btnExaminar.Name = "btnExaminar";
             this.btnExaminar.Size = new System.Drawing.Size(75, 23);
-            this.btnExaminar.TabIndex = 22;
+            this.btnExaminar.TabIndex = 7;
             this.btnExaminar.Text = "Examinar";
             this.btnExaminar.UseVisualStyleBackColor = true;
             this.btnExaminar.Click += new System.EventHandler(this.btnExaminar_Click);
@@ -210,7 +210,7 @@
             this.txtURLImagen.Location = new System.Drawing.Point(163, 306);
             this.txtURLImagen.Name = "txtURLImagen";
             this.txtURLImagen.Size = new System.Drawing.Size(140, 20);
-            this.txtURLImagen.TabIndex = 20;
+            this.txtURLImagen.TabIndex = 6;
             this.txtURLImagen.Leave += new System.EventHandler(this.txtURLImagen_Leave);
             // 
             // label7
@@ -245,7 +245,7 @@
             this.Controls.Add(this.LabelPrecio);
             this.Controls.Add(this.Descripcion);
             this.Controls.Add(this.LabelNombre);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormAltaArticulo";
             this.Text = "FormAltaArticulo";
             this.Load += new System.EventHandler(this.FormAltaArticulo_Load);

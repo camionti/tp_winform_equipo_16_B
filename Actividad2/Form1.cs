@@ -311,6 +311,13 @@ namespace Actividad2
             FromCategorias.ShowDialog(); 
             cargar(); 
         }
+
+        private void btnMarcas_Click(object sender, EventArgs e)
+        {
+            FrmMarcas FormMarcas = new FrmMarcas();
+            FormMarcas.ShowDialog();
+            cargar();
+        }
     }
 
 
