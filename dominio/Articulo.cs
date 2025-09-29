@@ -9,9 +9,7 @@ namespace dominio
 
 {
     public class Articulo
-    {
-       
-            
+    { 
             public int Id { get; set; }
             public string Codigo { get; set; }
             public string Nombre { get; set; }
@@ -22,9 +20,6 @@ namespace dominio
             public decimal Precio { get; set; }
             public Marca TipoMarca { get; set; }
             public Categoria TipoCategoria { get; set; }
-            public Imagen Imagen { get; set; }
-
-
+            public List<Imagen> Imagen { get; set; } = new List<Imagen>();
     }
-
 }

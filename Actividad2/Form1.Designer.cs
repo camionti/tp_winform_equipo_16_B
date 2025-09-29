@@ -50,6 +50,8 @@ namespace Actividad2
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.btnCategorias = new System.Windows.Forms.Button();
             this.btnMarcas = new System.Windows.Forms.Button();
+            this.bntImgAtras = new System.Windows.Forms.Button();
+            this.bntImgAdelante = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +61,7 @@ namespace Actividad2
             this.DGVArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.DGVArticulos.Location = new System.Drawing.Point(35, 56);
-            this.DGVArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DGVArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.DGVArticulos.Name = "DGVArticulos";
             this.DGVArticulos.RowHeadersWidth = 51;
             this.DGVArticulos.RowTemplate.Height = 24;
@@ -72,7 +74,7 @@ namespace Actividad2
             // btnAgregarArticulo
             // 
             this.btnAgregarArticulo.Location = new System.Drawing.Point(35, 370);
-            this.btnAgregarArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregarArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(118, 28);
             this.btnAgregarArticulo.TabIndex = 1;
@@ -83,7 +85,7 @@ namespace Actividad2
             // btnModificar
             // 
             this.btnModificar.Location = new System.Drawing.Point(177, 370);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(118, 28);
             this.btnModificar.TabIndex = 2;
@@ -94,7 +96,7 @@ namespace Actividad2
             // btnEliminarArticulos
             // 
             this.btnEliminarArticulos.Location = new System.Drawing.Point(317, 370);
-            this.btnEliminarArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminarArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarArticulos.Name = "btnEliminarArticulos";
             this.btnEliminarArticulos.Size = new System.Drawing.Size(118, 28);
             this.btnEliminarArticulos.TabIndex = 3;
@@ -121,7 +123,7 @@ namespace Actividad2
             // 
             // txtFiltroAvanzado
             // 
-            this.txtFiltroAvanzado.Location = new System.Drawing.Point(889, 371);
+            this.txtFiltroAvanzado.Location = new System.Drawing.Point(900, 372);
             this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(186, 20);
             this.txtFiltroAvanzado.TabIndex = 8;
@@ -148,7 +150,7 @@ namespace Actividad2
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(683, 374);
+            this.lblCriterio.Location = new System.Drawing.Point(711, 373);
             this.lblCriterio.Name = "lblCriterio";
             this.lblCriterio.Size = new System.Drawing.Size(39, 13);
             this.lblCriterio.TabIndex = 24;
@@ -165,9 +167,9 @@ namespace Actividad2
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(1090, 369);
+            this.btnBuscar.Location = new System.Drawing.Point(1101, 369);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(75, 24);
             this.btnBuscar.TabIndex = 9;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -185,7 +187,7 @@ namespace Actividad2
             // lblPrecioMaximo
             // 
             this.lblPrecioMaximo.AutoSize = true;
-            this.lblPrecioMaximo.Location = new System.Drawing.Point(674, 410);
+            this.lblPrecioMaximo.Location = new System.Drawing.Point(682, 411);
             this.lblPrecioMaximo.Name = "lblPrecioMaximo";
             this.lblPrecioMaximo.Size = new System.Drawing.Size(75, 13);
             this.lblPrecioMaximo.TabIndex = 30;
@@ -193,7 +195,7 @@ namespace Actividad2
             // 
             // txtPrecioMaximo
             // 
-            this.txtPrecioMaximo.Location = new System.Drawing.Point(754, 407);
+            this.txtPrecioMaximo.Location = new System.Drawing.Point(763, 408);
             this.txtPrecioMaximo.Name = "txtPrecioMaximo";
             this.txtPrecioMaximo.Size = new System.Drawing.Size(133, 20);
             this.txtPrecioMaximo.TabIndex = 7;
@@ -207,9 +209,9 @@ namespace Actividad2
             // 
             // pbxArticulo
             // 
-            this.pbxArticulo.Location = new System.Drawing.Point(723, 56);
+            this.pbxArticulo.Location = new System.Drawing.Point(763, 56);
             this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(290, 295);
+            this.pbxArticulo.Size = new System.Drawing.Size(323, 295);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 32;
             this.pbxArticulo.TabStop = false;
@@ -217,7 +219,7 @@ namespace Actividad2
             // btnCategorias
             // 
             this.btnCategorias.Location = new System.Drawing.Point(35, 411);
-            this.btnCategorias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCategorias.Margin = new System.Windows.Forms.Padding(2);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(180, 30);
             this.btnCategorias.TabIndex = 33;
@@ -236,11 +238,33 @@ namespace Actividad2
             this.btnMarcas.UseVisualStyleBackColor = true;
             this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
             // 
+            // bntImgAtras
+            // 
+            this.bntImgAtras.Location = new System.Drawing.Point(716, 188);
+            this.bntImgAtras.Name = "bntImgAtras";
+            this.bntImgAtras.Size = new System.Drawing.Size(34, 35);
+            this.bntImgAtras.TabIndex = 35;
+            this.bntImgAtras.Text = "←";
+            this.bntImgAtras.UseVisualStyleBackColor = true;
+            this.bntImgAtras.Click += new System.EventHandler(this.bntImgAtras_Click);
+            // 
+            // bntImgAdelante
+            // 
+            this.bntImgAdelante.Location = new System.Drawing.Point(1101, 188);
+            this.bntImgAdelante.Name = "bntImgAdelante";
+            this.bntImgAdelante.Size = new System.Drawing.Size(34, 35);
+            this.bntImgAdelante.TabIndex = 36;
+            this.bntImgAdelante.Text = "→";
+            this.bntImgAdelante.UseVisualStyleBackColor = true;
+            this.bntImgAdelante.Click += new System.EventHandler(this.bntImgAdelante_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1188, 465);
+            this.Controls.Add(this.bntImgAdelante);
+            this.Controls.Add(this.bntImgAtras);
             this.Controls.Add(this.btnMarcas);
             this.Controls.Add(this.btnCategorias);
             this.Controls.Add(this.pbxArticulo);
@@ -260,7 +284,7 @@ namespace Actividad2
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.DGVArticulos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -281,7 +305,6 @@ namespace Actividad2
         private Button btnEliminarArticulos;
         private Label lblFiltroRapido;
         private TextBox txtFiltroRapido;
-        private TextBox txtFiltroAvanzado;
         private ComboBox cboCriterio;
         private ComboBox cboCampo;
         private Label lblCriterio;
@@ -294,6 +317,9 @@ namespace Actividad2
         private PictureBox pbxArticulo;
         private Button btnCategorias;
         private Button btnMarcas;
+        protected TextBox txtFiltroAvanzado;
+        private Button bntImgAtras;
+        private Button bntImgAdelante;
     }
 }
 

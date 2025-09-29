@@ -17,6 +17,8 @@ namespace Actividad2
     public partial class Form1 : Form
     {
         public List<Articulo> listaArticulo;
+        private int indiceImg = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -31,23 +33,34 @@ namespace Actividad2
             cboCampo.Items.Add("Categoría");
             cboCampo.SelectedItem = "Nombre";
             cboCriterio.SelectedItem = "Comienza con";
+            indiceImg = 0;
+
         }
+
         private void cargar()
         {
             Conexion.ConexionArticulo conexion = new Conexion.ConexionArticulo();
             listaArticulo = conexion.Listar();
             DGVArticulos.DataSource = listaArticulo;
             ocultarColumnas();
-            cargarImagen(listaArticulo[0].Imagen.UrlImagen);
+            indiceImg = 0;
+
+            if (listaArticulo.Count > 0)
+            {
+                if (listaArticulo[0].Imagen != null && listaArticulo[0].Imagen.Count > 0)
+                    cargarImagen(listaArticulo[0].Imagen[0].UrlImagen);
+                else
+                    cargarImagen("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+            }
 
         }
 
         private void ocultarColumnas()
         {
-            DGVArticulos.Columns["Imagen"].Visible = false;
-            DGVArticulos.Columns["Id"].Visible = false;
-            DGVArticulos.Columns["IdCategoria"].Visible = false;
-            DGVArticulos.Columns["IdMarca"].Visible = false;
+            string[] cols = { "Id", "IdCategoria", "IdMarca", "IdImagen", "Imagen", "TipoMarca", "TipoCategoria" };
+            foreach (var name in cols)
+                if (DGVArticulos.Columns.Contains(name))
+                    DGVArticulos.Columns[name].Visible = false;
         }
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
@@ -60,7 +73,10 @@ namespace Actividad2
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Articulo seleccionado;
-            seleccionado = (Articulo)DGVArticulos.CurrentRow.DataBoundItem;
+            seleccionado = (Articulo)DGVArticulos.CurrentRow?.DataBoundItem;
+
+            if (seleccionado == null) seleccionado = (Articulo)DGVArticulos.Rows[0].DataBoundItem;
+
             FormAltaArticulo modificar = new FormAltaArticulo(seleccionado);
             modificar.ShowDialog();
             cargar();
@@ -298,10 +314,18 @@ namespace Actividad2
 
         private void DGVArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            if (DGVArticulos.CurrentRow != null)
+            if (DGVArticulos.CurrentRow == null) return;
+
+            Articulo aux = (Articulo)DGVArticulos.CurrentRow.DataBoundItem;
+
+            if (DGVArticulos.CurrentRow != null && aux.Imagen.Count > 0)
             {
-                Articulo aux = (Articulo)DGVArticulos.CurrentRow.DataBoundItem;
-                cargarImagen(aux.Imagen?.UrlImagen);
+                cargarImagen(aux.Imagen?[0].UrlImagen);
+                
+            }
+            else
+            {
+                cargarImagen("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
         }
 
@@ -317,6 +341,35 @@ namespace Actividad2
             FrmMarcas FormMarcas = new FrmMarcas();
             FormMarcas.ShowDialog();
             cargar();
+        }
+
+        private void bntImgAdelante_Click(object sender, EventArgs e)
+        {
+
+            Articulo seleccionado;
+            seleccionado = (Articulo)DGVArticulos.CurrentRow?.DataBoundItem;
+
+            if (seleccionado == null) seleccionado = (Articulo)DGVArticulos.Rows[0].DataBoundItem;
+
+            if (indiceImg + 1 < seleccionado.Imagen.Count())
+            {
+                indiceImg++;
+                cargarImagen(seleccionado.Imagen[indiceImg]?.UrlImagen);
+            }
+        }
+
+        private void bntImgAtras_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)DGVArticulos.CurrentRow?.DataBoundItem;
+
+            if (seleccionado == null) seleccionado = (Articulo)DGVArticulos.Rows[0].DataBoundItem;
+
+            if (indiceImg >= 1)
+            {
+                indiceImg--;
+                cargarImagen(seleccionado.Imagen[indiceImg]?.UrlImagen);
+            }
         }
     }
 

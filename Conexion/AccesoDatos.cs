@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 
 namespace Conexion
 {
@@ -30,6 +31,11 @@ namespace Conexion
         public void setearParametro(string nombre, object valor)
         {
             comando.Parameters.AddWithValue(nombre, valor ?? DBNull.Value);
+        }
+
+        public void limpiarParametros()
+        {
+            comando.Parameters.Clear();
         }
 
         public void ejecutarLectura()
@@ -61,6 +67,20 @@ namespace Conexion
         }
 
 
+        public int ejecutarEscalar()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                object result = comando.ExecuteScalar();
+                return (result == null || result == DBNull.Value) ? 0 : Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public void cerrarConexion()
         {

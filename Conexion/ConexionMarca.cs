@@ -1,9 +1,10 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using dominio;
+using System.Windows.Forms;
 
 namespace Conexion
 {
@@ -54,7 +55,7 @@ namespace Conexion
             catch (Exception ex)
             {
 
-                throw ex;
+                MessageBox.Show(ex.ToString());
             }
             finally
             {
@@ -73,10 +74,10 @@ namespace Conexion
                 datos.setearParametro("@Id", marca.IDMarca);
                 datos.ejecutarAccion();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.ToString());
             }
             finally
             {
@@ -94,11 +95,12 @@ namespace Conexion
                 datos.setearParametro("@Id", id);
                 datos.ejecutarAccion();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
-            }finally
+                MessageBox.Show(ex.ToString());
+            }
+            finally
             {
                 datos.cerrarConexion();
             }
